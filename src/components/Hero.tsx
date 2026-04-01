@@ -22,7 +22,7 @@ export default function Hero() {
     return Array.from({ length: 80 }).map(() => ({
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 2 + 0.5,
+      size: Math.random() * 5 + 0.5,
       speed: Math.random() * 0.03 + 0.01,
     }));
   }, []);
