@@ -34,7 +34,6 @@ export default function Hero() {
         {stars.map((star, i) => {
           const offsetX = (mousePos.x - window.innerWidth / 2) * star.speed;
           const offsetY = (mousePos.y - window.innerHeight / 2) * star.speed;
-
           return (
             <motion.div
               key={i}
