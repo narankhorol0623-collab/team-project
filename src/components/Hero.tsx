@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, Globe } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
+typeof window !== "undefined";
+
 export default function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 

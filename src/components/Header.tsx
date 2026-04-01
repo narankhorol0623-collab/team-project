@@ -30,7 +30,7 @@ export default function Header() {
           </a>
         </div>
         {/* DESKTOP MENU */}
-        <div className="hidden lg:flex lg:gap-x-12 ml-180">
+        <div className="hidden lg:flex lg:gap-x-12 ">
           <a className="text-sm font-semibold text-gray-900 dark:text-gray-200 hover:text-[#832028]">
             Давуу тал
           </a>
@@ -42,7 +42,7 @@ export default function Header() {
           </a>
         </div>
         {/* RIGHT SIDE */}
-        <div className="flex items-center gap-3 pl-180 ">
+        <div className="flex items-center gap-3 pl-5 ">
           {/* 🌗 DARK TOGGLE */}
           <button
             onClick={() => setDark(!dark)}
