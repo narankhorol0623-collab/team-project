@@ -6,7 +6,6 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dark, setDark] = useState(true);
 
-  // 🌗 APPLY DARK MODE TO HTML
   useEffect(() => {
     if (dark) {
       document.documentElement.classList.add("dark");
@@ -16,7 +15,7 @@ export default function Header() {
   }, [dark]);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
+    <header className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md  border-black dark:border-black dark:text-white ">
       <nav className="flex items-center justify-between p-6 lg:px-8">
         {/* LOGO */}
         <div className="flex lg:flex-1">
@@ -29,21 +28,29 @@ export default function Header() {
             </span>
           </a>
         </div>
-        {/* DESKTOP MENU */}
-        <div className="hidden lg:flex lg:gap-x-12 ">
-          <a className="text-sm font-semibold text-gray-900 dark:text-gray-200 hover:text-[#832028]">
+
+        <div className="hidden lg:flex lg:gap-x-12">
+          <a
+            href="#features"
+            className="text-sm font-semibold leading-6 text-gray-900 hover:text-[#832028] dark:text-white transition-colors"
+          >
             Давуу тал
           </a>
-          <a className="text-sm font-semibold text-gray-900 dark:text-gray-200 hover:text-[#832028]">
+          <a
+            href="#how-to-use transition-colors"
+            className="text-sm font-semibold leading-6 text-gray-900 hover:text-[#832028] dark:text-white transition-colors"
+          >
             Хэрхэн хэрэглэх вэ?
           </a>
-          <a className="text-sm font-semibold text-gray-900 dark:text-gray-200 hover:text-[#832028]">
+          <a
+            href="#"
+            className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-[#832028] transition-colors"
+          >
             Тусламж
           </a>
         </div>
-        {/* RIGHT SIDE */}
+
         <div className="flex items-center gap-3 pl-5 ">
-          {/* 🌗 DARK TOGGLE */}
           <button
             onClick={() => setDark(!dark)}
             className="p-2 rounded-full bg-black/10 dark:bg-white/10 backdrop-blur"
@@ -51,7 +58,6 @@ export default function Header() {
             {dark ? <Sun className="text-white" /> : <Moon />}
           </button>
 
-          {/* MOBILE MENU BUTTON */}
           <div className="flex lg:hidden">
             <button
               className="p-2.5 text-gray-700 dark:text-gray-200"
@@ -62,15 +68,16 @@ export default function Header() {
           </div>
         </div>
 
-        {/* CTA */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a className="rounded-full bg-[#F47983] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#832028]">
+          <a
+            href="https://chromewebstore.google.com/detail/grammarly-with-ghost/iakfoofepmfjafjepidembmheemidbdb"
+            className="rounded-full bg-[#F47983] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#832028]"
+          >
             Татаж авах
           </a>
         </div>
       </nav>
 
-      {/* 📱 MOBILE MENU */}
       {mobileMenuOpen && (
         <div className="lg:hidden">
           <div
