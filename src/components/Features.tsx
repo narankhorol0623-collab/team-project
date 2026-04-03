@@ -29,11 +29,11 @@ export default function Features() {
       className="relative bg-white dark:bg-black py-24 sm:py-32 overflow-hidden transition-colors"
       id="features"
     >
-      {/* 🌈 BACKGROUND GLOW */}
+
       <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-transparent to-cyan-500/10 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        {/* HEADER */}
+
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-base font-semibold text-[#F47983]">
             Давуу талууд
@@ -49,7 +49,7 @@ export default function Features() {
           </p>
         </div>
 
-        {/* FEATURES GRID */}
+
         <div className="mx-auto mt-16 max-w-2xl lg:max-w-none">
           <dl className="grid grid-cols-1 gap-12 lg:grid-cols-3">
             {features.map((feature, index) => (
@@ -61,7 +61,7 @@ export default function Features() {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="group rounded-2xl p-6 bg-white/70 dark:bg-white/5 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 hover:scale-105 hover:shadow-xl transition-all"
               >
-                {/* ICON */}
+
                 <div className="mb-4 flex items-center gap-3">
                   <feature.icon className="h-6 w-6 text-[#F47983] group-hover:scale-110 transition" />
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -69,7 +69,7 @@ export default function Features() {
                   </h3>
                 </div>
 
-                {/* DESCRIPTION */}
+
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                   {feature.description}
                 </p>

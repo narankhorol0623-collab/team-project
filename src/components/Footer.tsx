@@ -1,4 +1,3 @@
-// import { Github, Twitter, Facebook } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -7,21 +6,19 @@ export default function Footer() {
         <div className="flex justify-center space-x-6 md:order-2">
           <a href="#" className="text-gray-400 hover:text-gray-500">
             <span className="">Facebook</span>
-            {/* "sr-only" */}
-            {/* <Facebook className="h-6 w-6" aria-hidden="true" /> */}
+
           </a>
           <a href="#" className="text-gray-400 hover:text-gray-500">
             <span className="">Twitter</span>
-            {/* <Twitter className="h-6 w-6" aria-hidden="true" /> */}
           </a>
           <a href="#" className="text-gray-400 hover:text-gray-500">
             <span className="">GitHub</span>
-            {/* <Github className="h-6 w-6" aria-hidden="true" /> */}
           </a>
         </div>
         <div className="mt-8 md:order-1 md:mt-0">
           <p className="text-center text-xs leading-5 text-gray-500">
-            &copy; 2026 ЗөвБич.
+            &copy; 2026               ШаЛгАя
+.
           </p>
         </div>
       </div>
