@@ -4,6 +4,13 @@ import { useEffect, useState } from "react";
 import { motion, useInView } from "motion/react";
 import { ArrowRight, Globe } from "lucide-react";
 import { useRef } from "react";
+import TextareaAutosize from "react-textarea-autosize";
+
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+} from "@/components/ui/input-group";
 
 const FadeInWhenVisible = ({
   children,
@@ -170,10 +177,14 @@ export default function Hero() {
                   <div className="w-3 h-3 bg-yellow-400 rounded-full" />
                   <div className="w-3 h-3 bg-green-400 rounded-full" />
                 </div>
-                <div className="p-8 sm:p-12 text-left">
-                  <div className="max-w-xl">
-                    <input type="text" className="bg-amber-300 h-20 " />
-                  </div>
+                <div className="p-8 sm:p-12 text-left text-lg">
+                  <InputGroup className="flex text-2xl border-0">
+                    <TextareaAutosize
+                      data-slot="input-group-control"
+                      className="flex field-sizing-content min-h-16 w-full resize-none rounded-md bg-transparent px-3 py-2.5 text-sm transition-[color,box-shadow] outline-none md:text-xl"
+                      placeholder="Энд бичиж бидний Extension-ийг шалгаж үзээрэй."
+                    />
+                  </InputGroup>
                 </div>
               </div>
             </div>
