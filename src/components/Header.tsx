@@ -17,14 +17,14 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md  border-black dark:border-black dark:text-white ">
       <nav className="flex items-center justify-between p-6 lg:px-8">
-        {/* LOGO */}
+
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5 flex items-center gap-2">
             <div className="bg-[#F47983] p-2 rounded-lg">
               <SpellCheck className="h-6 w-6 text-white" />
             </div>
-            <span className="font-bold text-xl text-gray-900 dark:text-white">
-              ЗөвБич
+            <span className="font-black text-xl text-gray-900 dark:text-white">
+              ШаЛгАя
             </span>
           </a>
         </div>
@@ -88,7 +88,8 @@ export default function Header() {
           <div className="fixed inset-y-0 right-0 w-full bg-white dark:bg-black px-6 py-6 sm:max-w-sm">
             <div className="flex justify-between items-center">
               <span className="font-bold text-xl text-gray-900 dark:text-white">
-                ЗөвБич
+                              ШаЛгАя
+
               </span>
 
               <button onClick={() => setMobileMenuOpen(false)}>

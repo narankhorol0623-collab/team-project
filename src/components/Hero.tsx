@@ -39,15 +39,15 @@ type Star = { x: number; y: number; size: number; speed: number };
 export default function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
-  const [stars, setStars] = useState<Star[]>([]); // ← useState болгов
+  const [stars, setStars] = useState<Star[]>([]); 
 
   useEffect(() => {
-    // ← stars зөвхөн client дээр үүснэ, hydration алдаа гарахгүй
+
     setStars(
       Array.from({ length: 80 }).map(() => ({
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 2 + 0.5,
+        size: Math.random() * 15 + 0.5,
         speed: Math.random() * 0.03 + 0.01,
       })),
     );
@@ -72,7 +72,7 @@ export default function Hero() {
 
   return (
     <div className="relative isolate pt-14 overflow-hidden bg-white dark:bg-black transition-colors">
-      {/* ⭐ STARS BACKGROUND */}
+
       <div className="absolute inset-0 z-0">
         {stars.map((star, i) => {
           const offsetX = (mousePos.x - windowSize.width / 2) * star.speed;
@@ -80,7 +80,7 @@ export default function Hero() {
           return (
             <motion.div
               key={i}
-              className="absolute rounded-full bg-gray-400 dark:bg-yellow-300"
+              className="absolute rounded-full bg-pink-400 dark:bg-pink-300"
               animate={{ opacity: [0.2, 1, 0.2] }}
               transition={{ duration: 2, repeat: Infinity, delay: i * 0.02 }}
               style={{
@@ -95,12 +95,10 @@ export default function Hero() {
         })}
       </div>
 
-      {/* 🌈 TOP GRADIENT */}
+
       <div className="absolute inset-x-0 -top-40 -z-10 blur-3xl">
         <div className="bg-linear-to-tr from-pink-500/20 to-cyan-500/20 w-full h-100" />
       </div>
-
-      {/* CONTENT */}
       <div className="relative z-10 py-24 sm:py-32 lg:pb-40">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
@@ -112,7 +110,7 @@ export default function Hero() {
                 Монгол хэлний зөв бичгийн алдаа шалгагч
               </h1>
               <p className="mt-6 text-lg text-gray-600 dark:text-gray-400">
-                Таны бичсэн текстэн дэх алдааг хоромхон зуурт илрүүлж, засах
+                Таны бичсэн текстэн дэх алдааг хоромхон зуурт илрүүлж, засаж
                 санал болгоно.
               </p>
               <div className="mt-10 flex justify-center items-center gap-6">
@@ -122,7 +120,7 @@ export default function Hero() {
                 </a>
                 <a
                   href="#how-to-use transition-colors "
-                  className="text-gray-900 dark:text-white flex gap-1"
+                  className="bg-[#F47983] px-6 py-3 rounded-full text-white flex gap-2 hover:scale-105 transition"
                 >
                   Хэрхэн ажилладаг <ArrowRight />
                 </a>
@@ -130,13 +128,13 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* MOCKUP */}
+
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             className="mt-16"
           >
-            <div className="rounded-xl bg-gray-100 dark:bg-white/10 p-2">
+            <div className="rounded-xl bg-gray-100 dark:bg-white/10 p-2 mb-15">
               <div className="rounded-md bg-white dark:bg-black shadow-xl overflow-hidden">
                 <div className="bg-gray-100 dark:bg-white/10 px-4 py-3 flex gap-2">
                   <div className="w-3 h-3 bg-red-400 rounded-full" />
@@ -181,7 +179,7 @@ export default function Hero() {
                   <InputGroup className="flex text-2xl border-0">
                     <TextareaAutosize
                       data-slot="input-group-control"
-                      className="flex field-sizing-content min-h-16 w-full resize-none rounded-md bg-transparent px-3 py-2.5 text-sm transition-[color,box-shadow] outline-none md:text-xl"
+                      className="flex field-sizing-content min-h-16 w-full resize-none rounded-md  px-3 py-2.5 bg-white dark:bg-black text-sm transition-[color,box-shadow] outline-none md:text-xl"
                       placeholder="Энд бичиж бидний Extension-ийг шалгаж үзээрэй."
                     />
                   </InputGroup>

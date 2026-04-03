@@ -12,21 +12,21 @@ const steps = [
     description:
       'Chrome Web Store руу орж "Chrome-д нэмэх" товчийг дарж өргөтгөлийг суулгана.',
     icon: Download,
-    image: "./images.jpeg",
+    image: "tatah.png",
   },
   {
     name: "2. Идэвхжүүлэх",
     description:
       "Хөтчийнхөө баруун дээд буланд байрлах өргөтгөлийн дүрс дээр дарж идэвхжүүлнэ.",
     icon: MousePointerClick,
-    image: "./neg.png",
+    image: "l.png",
   },
   {
     name: "3. Бичиж эхлэх",
     description:
       "Дурын вэбсайт дээр бичиж эхлэхэд алдаатай үгийг улаанаар зурж, засах саналыг харуулна.",
     icon: PenTool,
-    image: "./Tm.jpg",
+    image: "min.png",
   },
 ];
 
@@ -42,7 +42,7 @@ export default function HowToUse() {
     return () => match.removeEventListener("change", listener);
   }, []);
 
-  // subtle floating animation for icons
+
   const floatVariants = useMemo(
     () => ({
       animate: {
@@ -91,7 +91,8 @@ export default function HowToUse() {
               </button>
               <div className="absolute bottom-6 left-8 z-10">
                 <p className="text-white font-semibold text-lg drop-shadow-md">
-                  ЗөвБич хэрхэн ажилладаг вэ? (Заавар бичлэг)
+                                ШаЛгАя
+ хэрхэн ажилладаг вэ? (Заавар бичлэг)
                 </p>
               </div>
             </>
@@ -137,7 +138,7 @@ export default function HowToUse() {
                   />
                 </div>
 
-                {/* Агуулга */}
+
                 <div className="flex flex-col items-start text-left gap-4">
                   <div className="flex h-16 w-16 items-center justify-center rounded-full">
                     <step.icon
