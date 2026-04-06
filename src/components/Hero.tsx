@@ -175,7 +175,7 @@ export default function Hero() {
                   <InputGroup className="flex text-2xl border-0">
                     <TextareaAutosize
                       data-slot="input-group-control"
-                      className="flex field-sizing-content min-h-16 w-full resize-none rounded-md  px-3 py-2.5 bg-white dark:bg-black text-sm transition-[color,box-shadow] outline-none md:text-xl"
+                      className="flex field-sizing-content min-h-16 w-full resize-none rounded-md  px-3 py-2.5 bg-white dark:bg-black  text-gray-500 text-sm transition-[color,box-shadow] outline-none md:text-xl"
                       placeholder="Энд бичиж бидний Extension-ийг шалгаж үзээрэй."
                     />
                   </InputGroup>

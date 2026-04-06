@@ -16,8 +16,8 @@ export default function Footer() {
             <span className="">GitHub</span>
           </a>
         </div>
-        <div className="md:order-1 md:mt-0">
-          <p className="text-center text-[0.625rem] leading-5 text-gray-500 p-6">
+        <div className="md:order-1 flex items-center justify-center mt-4 md:mt-7 md:justify-start">
+          <p className="text-center md:text-xl text-[0.625rem] leading-5 text-gray-500 p-6 ">
             &copy; 2026 ШаЛгАя - Монгол хэлний зөв бичгийн алдаа шалгагч.
           </p>
         </div>
