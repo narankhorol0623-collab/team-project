@@ -54,7 +54,7 @@ const HowToUse2 = () => {
       id="how-to-use transition-colors"
     >
       <div className="mx-auto max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none md:flex">
-        <div className="flex flex-col gap-8 p-3 rounded-2xl shadow-xl lg:p-8">
+        <div className="flex flex-col gap-8 px-2 pb-15 rounded-2xl shadow-xl lg:p-8">
           {steps.map((step, index) => (
             <motion.div
               key={step.name}
