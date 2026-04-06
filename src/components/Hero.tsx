@@ -39,10 +39,9 @@ type Star = { x: number; y: number; size: number; speed: number };
 export default function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
-  const [stars, setStars] = useState<Star[]>([]); 
+  const [stars, setStars] = useState<Star[]>([]);
 
   useEffect(() => {
-
     setStars(
       Array.from({ length: 80 }).map(() => ({
         x: Math.random() * 100,
@@ -72,7 +71,6 @@ export default function Hero() {
 
   return (
     <div className="relative isolate pt-14 overflow-hidden bg-white dark:bg-black transition-colors">
-
       <div className="absolute inset-0 z-0">
         {stars.map((star, i) => {
           const offsetX = (mousePos.x - windowSize.width / 2) * star.speed;
@@ -95,7 +93,6 @@ export default function Hero() {
         })}
       </div>
 
-
       <div className="absolute inset-x-0 -top-40 -z-10 blur-3xl">
         <div className="bg-linear-to-tr from-pink-500/20 to-cyan-500/20 w-full h-100" />
       </div>
@@ -114,7 +111,7 @@ export default function Hero() {
                 санал болгоно.
               </p>
               <div className="mt-10 flex justify-center items-center gap-6">
-                <a className="bg-[#F47983] px-6 py-3 rounded-full text-white flex gap-2 hover:scale-105 transition">
+                <a className="bg-[#F47983] px-6 py-3 rounded-full text-white flex items-center gap-2 hover:scale-105 transition">
                   <Globe className="w-5 h-5" />
                   Chrome-д нэмэх
                 </a>
@@ -127,7 +124,6 @@ export default function Hero() {
               </div>
             </motion.div>
           </div>
-
 
           <motion.div
             initial={{ opacity: 0, y: 40 }}

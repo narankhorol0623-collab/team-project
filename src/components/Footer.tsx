@@ -1,12 +1,13 @@
-
 export default function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-900 transition-colors">
-      <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
-        <div className="flex justify-center space-x-6 md:order-2">
+      <div className="mx-auto max-w-7xl md:flex md:items-center md:justify-between pb-6">
+        <div className="flex justify-center pt-6 space-x-6 md:order-2">
+          <a href="#" className="text-gray-400 hover:text-gray-500">
+            <span className="">Youtube</span>
+          </a>
           <a href="#" className="text-gray-400 hover:text-gray-500">
             <span className="">Facebook</span>
-
           </a>
           <a href="#" className="text-gray-400 hover:text-gray-500">
             <span className="">Twitter</span>
@@ -15,10 +16,9 @@ export default function Footer() {
             <span className="">GitHub</span>
           </a>
         </div>
-        <div className="mt-8 md:order-1 md:mt-0">
-          <p className="text-center text-xs leading-5 text-gray-500">
-            &copy; 2026               ШаЛгАя
-.
+        <div className="md:order-1 md:mt-0">
+          <p className="text-center text-[0.625rem] leading-5 text-gray-500 p-6">
+            &copy; 2026 ШаЛгАя - Монгол хэлний зөв бичгийн алдаа шалгагч.
           </p>
         </div>
       </div>

@@ -42,7 +42,6 @@ export default function HowToUse() {
     return () => match.removeEventListener("change", listener);
   }, []);
 
-
   const floatVariants = useMemo(
     () => ({
       animate: {
@@ -54,11 +53,11 @@ export default function HowToUse() {
   );
   return (
     <div
-      className="bg-gray-50 dark:bg-black py-24 sm:py-32"
+      className="bg-gray-50 dark:bg-black md:py-24"
       id="how-to-use transition-colors"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 ">
-        <div className="mx-auto max-w-2xl lg:text-center ">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-6">
+        <div className="mx-auto max-w-2xl text-center ">
           <h2 className="text-base font-semibold leading-7 text-[#F47983] ">
             Заавар
           </h2>
@@ -91,8 +90,7 @@ export default function HowToUse() {
               </button>
               <div className="absolute bottom-6 left-8 z-10">
                 <p className="text-white font-semibold text-lg drop-shadow-md">
-                                ШаЛгАя
- хэрхэн ажилладаг вэ? (Заавар бичлэг)
+                  ШаЛгАя хэрхэн ажилладаг вэ? (Заавар бичлэг)
                 </p>
               </div>
             </>
@@ -111,7 +109,7 @@ export default function HowToUse() {
           )}
         </motion.div>
 
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 hidden lg:mt-24 lg:max-w-none md:flex">
           <div className="flex flex-col gap-8">
             {steps.map((step, index) => (
               <motion.div
@@ -120,12 +118,12 @@ export default function HowToUse() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className={`relative flex flex-row justify-between items-center gap-8 bg-white dark:bg-white/5 p-8 rounded-2xl shadow-sm   hover:scale-105 hover:shadow-xl transition-all ${
-                  index % 2 === 0 ? "flex-row" : "flex-row-reverse" // ← сондгой индекст зураг баруун талд
+                className={`relative flex flex-col justify-between items-center gap-8 bg-white dark:bg-white/5 p-8 rounded-2xl shadow-sm hover:scale-105 hover:shadow-xl transition-all ${
+                  index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                 }`}
               >
                 {/* Зураг */}
-                <div className="flex-shrink-0 w-84 h-48 rounded-xl overflow-hidden">
+                <div className="shrink-0 w-84 h-48 rounded-xl overflow-hidden">
                   <img
                     src={step.image}
                     alt={step.name}
@@ -137,7 +135,6 @@ export default function HowToUse() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-
 
                 <div className="flex flex-col items-start text-left gap-4">
                   <div className="flex h-16 w-16 items-center justify-center rounded-full">
