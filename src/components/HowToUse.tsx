@@ -125,7 +125,7 @@ export default function HowToUse() {
                 }`}
               >
                 {/* Зураг */}
-                <div className="flex-shrink-0 w-84 h-48 rounded-xl overflow-hidden">
+                <div className="`flex-shrink-0` w-84 h-48 rounded-xl overflow-hidden">
                   <img
                     src={step.image}
                     alt={step.name}

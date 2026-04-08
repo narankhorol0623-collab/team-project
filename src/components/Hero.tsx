@@ -39,15 +39,14 @@ type Star = { x: number; y: number; size: number; speed: number };
 export default function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
-  const [stars, setStars] = useState<Star[]>([]); 
+  const [stars, setStars] = useState<Star[]>([]);
 
   useEffect(() => {
-
     setStars(
       Array.from({ length: 80 }).map(() => ({
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 15 + 0.5,
+        size: Math.random() * 10 + 0.5,
         speed: Math.random() * 0.03 + 0.01,
       })),
     );
@@ -72,7 +71,6 @@ export default function Hero() {
 
   return (
     <div className="relative isolate pt-14 overflow-hidden bg-white dark:bg-black transition-colors">
-
       <div className="absolute inset-0 z-0">
         {stars.map((star, i) => {
           const offsetX = (mousePos.x - windowSize.width / 2) * star.speed;
@@ -94,7 +92,6 @@ export default function Hero() {
           );
         })}
       </div>
-
 
       <div className="absolute inset-x-0 -top-40 -z-10 blur-3xl">
         <div className="bg-linear-to-tr from-pink-500/20 to-cyan-500/20 w-full h-100" />
@@ -127,7 +124,6 @@ export default function Hero() {
               </div>
             </motion.div>
           </div>
-
 
           <motion.div
             initial={{ opacity: 0, y: 40 }}

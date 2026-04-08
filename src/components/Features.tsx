@@ -30,7 +30,7 @@ export default function Features() {
       id="features"
     >
 
-      <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-transparent to-cyan-500/10 blur-3xl" />
+      <div className="absolute inset-0 `bg-gradient-to-br` from-pink-500/10 via-transparent to-cyan-500/10 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
 
