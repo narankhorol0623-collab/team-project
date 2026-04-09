@@ -1,17 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { ArrowRight, Globe } from "lucide-react";
-import { useRef } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-} from "@/components/ui/input-group";
+import { InputGroup } from "@/components/ui/input-group";
 
+// -------------------- FadeIn Component --------------------
 const FadeInWhenVisible = ({
   children,
   delay = 0,
@@ -34,32 +30,66 @@ const FadeInWhenVisible = ({
   );
 };
 
+// -------------------- Types --------------------
 type Star = { x: number; y: number; size: number; speed: number };
 
+// -------------------- Hero Component --------------------
 export default function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const [stars, setStars] = useState<Star[]>([]);
+  const [displayedText, setDisplayedText] = useState("");
 
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  // -------------------- Aldaa / Correct --------------------
+  const mistakes = [{ wrong: "сайханн", correct: "сайхан" }];
+
+  // -------------------- Highlight Function --------------------
+  const renderHighlightedText = (text: string) => {
+    let elements: React.ReactNode[] = [text];
+
+    mistakes.forEach(({ wrong, correct }) => {
+      elements = elements.flatMap((el) => {
+        if (typeof el !== "string") return el;
+
+        return el.split(wrong).flatMap((part, i, arr) => {
+          if (i === arr.length - 1) return part;
+
+          return [
+            part,
+            <span
+              key={Math.random()}
+              className="mistake text-red-500 underline decoration-red-500 decoration-wavy cursor-pointer relative"
+              data-correct={correct}
+            >
+              {wrong}
+            </span>,
+          ];
+        });
+      });
+    });
+
+    return elements;
+  };
+
+  // -------------------- Stars + Mouse --------------------
   useEffect(() => {
     setStars(
       Array.from({ length: 80 }).map(() => ({
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 15 + 0.5,
+        size: Math.random() * 18 + 0.5,
         speed: Math.random() * 0.03 + 0.01,
       })),
     );
 
     setWindowSize({ width: window.innerWidth, height: window.innerHeight });
 
-    const handleResize = () => {
+    const handleResize = () =>
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-    };
 
-    const move = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
+    const move = (e: MouseEvent) => setMousePos({ x: e.clientX, y: e.clientY });
 
     window.addEventListener("mousemove", move);
     window.addEventListener("resize", handleResize);
@@ -69,12 +99,43 @@ export default function Hero() {
     };
   }, []);
 
+  // -------------------- Scroll / Typewriter Animation --------------------
+  const fullText =
+    "Өнөөдөр цаг агаар маш сайханн байна. Бид найзуудаараа ууланд алхахаар явлаа.";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      const progress = Math.min(
+        Math.max((windowHeight - rect.top) / (windowHeight + rect.height), 0),
+        1,
+      );
+
+      const targetLength = Math.floor(fullText.length * progress);
+      const currentLength = displayedText.length;
+
+      if (targetLength > currentLength) {
+        setDisplayedText(fullText.slice(0, targetLength));
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [displayedText]);
+
+  // -------------------- Render --------------------
   return (
     <div className="relative isolate pt-14 overflow-hidden bg-white dark:bg-black transition-colors">
+      {/* ⭐ Stars */}
       <div className="absolute inset-0 z-0">
         {stars.map((star, i) => {
           const offsetX = (mousePos.x - windowSize.width / 2) * star.speed;
           const offsetY = (mousePos.y - windowSize.height / 2) * star.speed;
+
           return (
             <motion.div
               key={i}
@@ -93,9 +154,11 @@ export default function Hero() {
         })}
       </div>
 
+      {/* Gradient */}
       <div className="absolute inset-x-0 -top-40 -z-10 blur-3xl">
         <div className="bg-linear-to-tr from-pink-500/20 to-cyan-500/20 w-full h-100" />
       </div>
+
       <div className="relative z-10 py-24 sm:py-32 lg:pb-40">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
@@ -110,13 +173,15 @@ export default function Hero() {
                 Таны бичсэн текстэн дэх алдааг хоромхон зуурт илрүүлж, засаж
                 санал болгоно.
               </p>
+
               <div className="mt-10 flex justify-center items-center gap-6">
                 <a className="bg-[#F47983] px-6 py-3 rounded-full text-white flex items-center gap-2 hover:scale-105 transition">
                   <Globe className="w-5 h-5" />
                   Chrome-д нэмэх
                 </a>
+
                 <a
-                  href="#how-to-use transition-colors "
+                  href="#how-to-use"
                   className="bg-[#F47983] px-6 py-3 rounded-full text-white flex gap-2 hover:scale-105 transition"
                 >
                   Хэрхэн ажилладаг <ArrowRight />
@@ -130,40 +195,32 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             className="mt-16"
           >
-            <div className="rounded-xl bg-gray-100 dark:bg-white/10 p-2 mb-15">
-              <div className="rounded-md bg-white dark:bg-black shadow-xl overflow-hidden">
-                <div className="bg-gray-100 dark:bg-white/10 px-4 py-3 flex gap-2">
-                  <div className="w-3 h-3 bg-red-400 rounded-full" />
-                  <div className="w-3 h-3 bg-yellow-400 rounded-full" />
-                  <div className="w-3 h-3 bg-green-400 rounded-full" />
-                </div>
-                <div className="p-8 sm:p-12 text-left">
-                  <div className="max-w-xl">
-                    <div className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed font-sans">
-                      Өнөөдөр цаг агаар маш{" "}
-                      <span className="underline decoration-red-500 decoration-wavy decoration-2 relative group cursor-pointer">
-                        сайханн
-                        <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block bg-white border border-gray-200 shadow-lg rounded-lg p-2 text-sm text-gray-700 whitespace-nowrap z-10">
-                          <div className="font-semibold text-red-600 hover:bg-blue-50 px-2 py-1 rounded cursor-pointer">
-                            сайхан
-                          </div>
-                        </div>
-                      </span>{" "}
-                      байна. Бид найзуудаараа ууланд{" "}
-                      <span className="underline decoration-red-500 decoration-wavy decoration-2 relative group cursor-pointer">
-                        алхахаар
-                        <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block bg-white border border-gray-200 shadow-lg rounded-lg p-2 text-sm text-gray-700 whitespace-nowrap z-10">
-                          <div className="font-semibold text-red-600 hover:bg-blue-50 px-2 py-1 rounded cursor-pointer">
-                            алхахаар
-                          </div>
-                        </div>
-                      </span>{" "}
-                      явлаа.
+            <FadeInWhenVisible>
+              {/* Output Text */}
+              <div
+                ref={containerRef}
+                className="rounded-xl bg-gray-100 dark:bg-white/10 p-2 mb-15 "
+              >
+                <div className="rounded-md bg-white dark:bg-black shadow-xl overflow-hidden ">
+                  <div className="bg-gray-100 dark:bg-white/10 px-4 py-3 flex gap-2 ">
+                    <div className="w-3 h-3 bg-red-400 rounded-full" />
+                    <div className="w-3 h-3 bg-yellow-400 rounded-full" />
+                    <div className="w-3 h-3 bg-green-400 rounded-full" />
+                  </div>
+
+                  <div className="p-8 sm:p-12 text-left">
+                    <div className="max-w-xl">
+                      <div className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed font-sans">
+                        {renderHighlightedText(displayedText)}
+                        <span className="animate-pulse">|</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </FadeInWhenVisible>
+
+            {/* Input */}
             <div className="rounded-xl bg-gray-100 dark:bg-white/10 p-2">
               <div className="rounded-md bg-white dark:bg-black shadow-xl overflow-hidden">
                 <div className="bg-gray-100 dark:bg-white/10 px-4 py-3 flex gap-2">
@@ -171,11 +228,12 @@ export default function Hero() {
                   <div className="w-3 h-3 bg-yellow-400 rounded-full" />
                   <div className="w-3 h-3 bg-green-400 rounded-full" />
                 </div>
+
                 <div className="p-8 sm:p-12 text-left text-lg">
                   <InputGroup className="flex text-2xl border-0">
                     <TextareaAutosize
                       data-slot="input-group-control"
-                      className="flex field-sizing-content min-h-16 w-full resize-none rounded-md  px-3 py-2.5 bg-white dark:bg-black  text-gray-500 text-sm transition-[color,box-shadow] outline-none md:text-xl"
+                      className="flex field-sizing-content min-h-16 w-full resize-none rounded-md px-3 py-2.5 bg-white dark:bg-black text-gray-500 text-sm transition-[color,box-shadow] outline-none md:text-xl"
                       placeholder="Энд бичиж бидний Extension-ийг шалгаж үзээрэй."
                     />
                   </InputGroup>
