@@ -135,3 +135,22 @@ root {
     @apply font-sans;
   }
 }
+.mistake::after {
+  content: attr(data-correct);
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+  background: #111;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.mistake:hover::after {
+  opacity: 1;
+}
